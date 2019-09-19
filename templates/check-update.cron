@@ -1,0 +1,2 @@
+MAILTO=""
+18 * * * * root /usr/local/bin/check-update.rb {{ update_check_snitch }}

@@ -1,0 +1,7 @@
+---
+- block:
+  - fail: msg="Missing update_check_snitch"
+    when: update_check_snitch is undefined
+  - copy: src=check-update.rb dest=/usr/local/bin/check-update.rb mode=755
+  - template: src=check-update.cron dest=/etc/cron.d/check-update.cron mode=644
+  when: no_snitches is undefined
