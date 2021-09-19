@@ -1,5 +1,14 @@
 ---
 - block:
+  # TODO use systemd timers instead..
+  - name: Install cronie
+    package:
+      name: cronie
+  - name: enable cronie
+    service:
+      name: crond
+      enabled: yes
+      state: started
   - fail: msg="Missing update_check_snitch"
     when: update_check_snitch is undefined
   - copy: src=check-update.rb dest=/usr/local/bin/check-update.rb mode=755
